@@ -23,7 +23,6 @@ struct PopupReplayGame: View {
             VStack{
                 HStack(){
                     Button(){
-                        print("correct")
                         gamePlayViewModel.generateRandomNum()
                         gamePlayViewModel.sumCorrectAns.removeAll()
                         gamePlayViewModel.confirmReplayGame.toggle()
@@ -35,7 +34,6 @@ struct PopupReplayGame: View {
                             .frame(width: 100)
                     }
                     Button(){
-                        print("wrong")
                         gamePlayViewModel.confirmReplayGame.toggle()
                         
                     } label: {

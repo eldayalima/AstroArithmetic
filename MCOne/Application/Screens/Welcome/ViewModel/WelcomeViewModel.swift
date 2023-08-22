@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class WelcomeViewModel: ObservableObject {
     @Published var blinking = false
     @Published var isRotated = false

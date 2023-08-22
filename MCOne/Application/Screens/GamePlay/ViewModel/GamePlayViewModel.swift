@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class GamePlayViewModel: ObservableObject {
     @Published var listQuestion: [[QuestionModel]] = []
     @Published var isShowAlert: Bool = false

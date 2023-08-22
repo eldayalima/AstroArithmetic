@@ -22,7 +22,6 @@ struct WinningScreen: View {
                 
                 NavigationLink(destination: ContentView(), isActive: $replayGame){
                     Button(){
-                        print("correct")
                         replayGame.toggle()
                     } label: {
                         Image("replayGameButton")

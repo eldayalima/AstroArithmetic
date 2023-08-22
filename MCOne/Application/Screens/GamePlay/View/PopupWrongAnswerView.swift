@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PopupWrongAnswerView: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         Text("Yah jawaban kamu belum tepat. Ayo coba lagi!")
@@ -28,6 +28,6 @@ struct PopupWrongAnswerView: View {
 
 struct PopupWrongAnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        PopupWrongAnswerView()
+        PopupWrongAnswerView().environmentObject(GamePlayViewModel())
     }
 }

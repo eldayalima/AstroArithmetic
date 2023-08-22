@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     @StateObject var welcomeViewModel: WelcomeViewModel = WelcomeViewModel()
-    
     var body: some View {
         NavigationView{
             ZStack {
@@ -42,6 +41,7 @@ struct WelcomeScreen: View {
                 .scaledToFill()
             )
             .edgesIgnoringSafeArea(.all )
+            
         }
     }
     

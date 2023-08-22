@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListQuestionView: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     var body: some View {
         HStack {
             VStack{
@@ -74,15 +74,14 @@ struct ListQuestionView: View {
         )
         .onAppear(){
             gamePlayViewModel.showAddView = true
-            gamePlayViewModel.generateRandomNum()
             var isFinish: Bool = false
             for quest in gamePlayViewModel.listQuestion{
                 for q in quest {
-                    print(q.isCorrect)
+//                    print(q.isCorrect)
                     isFinish=q.isCorrect
                 }
             }
-            print("isfinish",isFinish)
+//            print("isfinish",isFinish)
         }
     }
 }

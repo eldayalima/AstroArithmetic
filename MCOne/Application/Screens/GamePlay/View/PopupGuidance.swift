@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PopupGuidance: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         ZStack{
@@ -23,7 +23,7 @@ struct PopupGuidance: View {
             VStack{
                 HStack(){
                     Button(){
-                        gamePlayViewModel.isOpenGuidance.toggle()
+                        gamePlayViewModel.isOpenGuidance = false
                     } label: {
                         Image("tombolMengerti")
                             .resizable()
@@ -43,6 +43,6 @@ struct PopupGuidance: View {
 
 struct PopupGuidance_Previews: PreviewProvider {
     static var previews: some View {
-        PopupGuidance()
+        PopupGuidance().environmentObject(GamePlayViewModel())
     }
 }
