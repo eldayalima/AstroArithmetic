@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PopupFinished: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         Text("Yey game telah selesai")
@@ -28,6 +28,6 @@ struct PopupFinished: View {
 
 struct PopupFinished_Previews: PreviewProvider {
     static var previews: some View {
-        PopupFinished()
+        PopupFinished().environmentObject(GamePlayViewModel())
     }
 }

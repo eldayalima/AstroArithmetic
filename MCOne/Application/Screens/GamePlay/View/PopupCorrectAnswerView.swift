@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PopupCorrectAnswerView: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         VStack{
@@ -31,6 +31,6 @@ struct PopupCorrectAnswerView: View {
 
 struct PopupCorrectAnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        PopupCorrectAnswerView()
+        PopupCorrectAnswerView().environmentObject(GamePlayViewModel())
     }
 }

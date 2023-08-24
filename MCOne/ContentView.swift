@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
-    @State var isOpenGuidance: Bool = false
-    @State var isWrongAnswer: Bool = false
+
     var body: some View {
         NavigationView(){
             ZStack{
@@ -18,33 +17,33 @@ struct ContentView: View {
                 ListQuestionView()
                 
                 
-                //                if gamePlayViewModel.isShowCorrectAlert {
-                //                    PopupCorrectAnswerView()
-                //                }
+                if gamePlayViewModel.isShowCorrectAlert {
+                    PopupCorrectAnswerView()
+                }
                 
-                if self.gamePlayViewModel.isShowAlert{
+                if gamePlayViewModel.isShowAlert{
                     PopupWrongAnswerView()
                 }
-                //                if gamePlayViewModel.isGameFinished{
-                //                    PopupFinished()
-                //                }
-                //                if gamePlayViewModel.confirmReplayGame{
-                //                    PopupReplayGame()
-                //                }
-                if isOpenGuidance {
+                if gamePlayViewModel.isGameFinished{
+                    PopupFinished()
+                }
+                if gamePlayViewModel.confirmReplayGame{
+                    PopupReplayGame()
+                }
+                if gamePlayViewModel.isOpenGuidance {
                     PopupGuidance()
                 }
             }
-            .onReceive(gamePlayViewModel.$isShowAlert){ newName in
-                print(newName)
-                print("User name changed to ==========>")
-                if(!newName){
-                    isWrongAnswer = newName
-                }
-            }
-//            .onChange(of: gamePlayViewModel.isOpenGuidance, perform: { newValue in
-//                isShowPopupGuidance.toggle()
-//            })
+            //            .onReceive(gamePlayViewModel.$isShowAlert){ newName in
+            //                print(newName)
+            //                print("User name changed to ==========>")
+            //                if(!newName){
+            //                    isWrongAnswer = newName
+            //                }
+            //            }
+            //            .onChange(of: gamePlayViewModel.isOpenGuidance, perform: { newValue in
+            //                isShowPopupGuidance.toggle()
+            //            })
             
             
             

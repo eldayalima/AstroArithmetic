@@ -72,22 +72,11 @@ struct ListQuestionView: View {
             .resizable()
             .edgesIgnoringSafeArea(.all)
         )
-        .onAppear(){
-            gamePlayViewModel.showAddView = true
-            var isFinish: Bool = false
-            for quest in gamePlayViewModel.listQuestion{
-                for q in quest {
-//                    print(q.isCorrect)
-                    isFinish=q.isCorrect
-                }
-            }
-//            print("isfinish",isFinish)
-        }
     }
 }
 
 struct ListQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        ListQuestionView()
+        ListQuestionView().environmentObject(GamePlayViewModel())
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PopupReplayGame: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         ZStack{
@@ -56,6 +56,6 @@ struct PopupReplayGame: View {
 
 struct PopupReplayGame_Previews: PreviewProvider {
     static var previews: some View {
-        PopupReplayGame()
+        PopupReplayGame().environmentObject(GamePlayViewModel())
     }
 }

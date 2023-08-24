@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AnswerView: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View{
         HStack{
@@ -41,6 +41,6 @@ struct AnswerView: View {
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView()
+        AnswerView().environmentObject(GamePlayViewModel())
     }
 }

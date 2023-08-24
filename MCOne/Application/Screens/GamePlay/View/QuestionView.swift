@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct QuestionView: View {
-    @StateObject var gamePlayViewModel: GamePlayViewModel = GamePlayViewModel()
-    @State var isCorrect: Bool = false
+    @EnvironmentObject var gamePlayViewModel: GamePlayViewModel
     
     var body: some View {
         HStack{
@@ -27,31 +26,20 @@ struct QuestionView: View {
                                 .background(Color("PurpleLight"))
                                 .padding(.horizontal, 3)
                                 .font(.system(size: 14).bold())
-                                .onChange(of: gamePlayViewModel.isShowAlert, perform: { val in
-                                    print("======+> TRIGGRED")
-                                    print(val)
-                                    if(val){
-                                        
-                                        gamePlayViewModel.isShowCorrectAlert=true
-                                        gamePlayViewModel.listQuestion[i][x].isCorrect = true
-                                        gamePlayViewModel.sumCorrectAns.append( gamePlayViewModel.listQuestion[i][x].id)
-                                    }else{
-                                        
-                                        self.gamePlayViewModel.isShowAlert=true
-                                    }
-                                })
                                 .onDrop(of: ["text"] ,delegate:
                                             DTDropTarget(num1: gamePlayViewModel.listQuestion[i][x].num1, num2: gamePlayViewModel.listQuestion[i][x].num2)
                                         { succeed in
                                     if succeed{
-                                        isCorrect = true
+                                        gamePlayViewModel.isShowCorrectAlert=true
+                                        gamePlayViewModel.listQuestion[i][x].isCorrect = true
+                                        gamePlayViewModel.sumCorrectAns.append( gamePlayViewModel.listQuestion[i][x].id)
                                         
                                         if(gamePlayViewModel.sumCorrectAns.count == 16){
                                             //                                            print("Game selesai")
                                             gamePlayViewModel.isGameFinished=true
                                         }
                                     }else{
-                                        isCorrect = false
+                                        gamePlayViewModel.isShowAlert=true
                                     }
                                 })
                                 
@@ -67,6 +55,6 @@ struct QuestionView: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView()
+        QuestionView().environmentObject(GamePlayViewModel())
     }
 }
